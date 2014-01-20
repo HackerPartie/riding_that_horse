@@ -11,12 +11,23 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>RidingServlet</display-name>
-    <servlet-name>RidingServlet</servlet-name>
-    <servlet-class>ur.controller.RidingServlet</servlet-class>
+    <display-name>horse</display-name>
+    <servlet-name>horse</servlet-name>
+    <servlet-class>ur.controller.HorseServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>RidingServlet</servlet-name>
-    <url-pattern>/RidingServlet</url-pattern>
+    <servlet-name>horse</servlet-name>
+    <url-pattern>/horse</url-pattern>
   </servlet-mapping>
+  <servlet>
+  	<description></description>
+  	<display-name>riding</display-name>
+  	<servlet-name>riding</servlet-name>
+  	<servlet-class>ur.controller.RidingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>riding</servlet-name>
+  	<url-pattern>/riding</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
