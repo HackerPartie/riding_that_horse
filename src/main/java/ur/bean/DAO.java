@@ -2,13 +2,12 @@ package ur.bean;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public class DAO {
 	
 	private Connection connection = null;
 	
-	public Connection connectDb () throws SQLException, ClassNotFoundException {
+	public Connection connectDb () throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		String dbUrl = "jdbc:mysql://localhost:3306/riding";
 		String user = "horse";
