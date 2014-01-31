@@ -1,4 +1,4 @@
-package ur.controller;
+package ur.controller.login;
 
 import java.io.IOException;
 

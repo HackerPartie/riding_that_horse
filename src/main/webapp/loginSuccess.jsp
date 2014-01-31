@@ -11,8 +11,8 @@
 <%@include file="include/auth.jsp" %>
 <%@include file="include/navigation.jsp" %>
 
-<h4>Hi <%= userName %>, ois passt!! Your Session ID: <%= sessionID %></h4>
-User = <%= user %><br>
+<h4>Hi <%= request.getAttribute("userName") %>, ois passt!! Your Session ID: <%= request.getAttribute("sessionID") %></h4>
+User<br>
 <a href="checkout.jsp">checkout</a>
 <form action="LogoutServlet" method="post">
 	<input type="submit" value="logout">
