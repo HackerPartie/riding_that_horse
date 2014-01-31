@@ -1,5 +1,5 @@
 <%
-String user = null;
+/* String user = null;
 
 if (session.getAttribute("user") == null) {
 	response.sendRedirect("login.jsp");
@@ -14,5 +14,5 @@ if (cookies != null) {
 		if (cookie.getName().equals(user)) userName = cookie.getName();
 		if (cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
 	}
-}
+} */
 %>
