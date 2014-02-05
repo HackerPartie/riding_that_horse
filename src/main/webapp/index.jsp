@@ -14,6 +14,8 @@
 
 	<br>
 	
+	<%= request.getAttribute("userName") %><br>
+	
 <form action="riding" method="get">
 	<select id="horse" name="horsename">
 		<c:forEach items="${horses}" var="horse">

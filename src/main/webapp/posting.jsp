@@ -11,6 +11,8 @@
 <%@include file="include/auth.jsp" %>
 <%@include file="include/navigation.jsp" %>
 
+<%= request.getAttribute("userName") %>
+
 <form action="savepost" method="post" id="postingform">
 	<input type="text" name="title"><br>
 	<textarea rows="5" cols="31" name="body"></textarea><br>
