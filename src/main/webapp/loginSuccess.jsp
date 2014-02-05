@@ -13,8 +13,11 @@
 
 <h4>Hi <%= request.getAttribute("userName") %>, ois passt!! Your Session ID: <%= request.getAttribute("sessionID") %></h4>
 User<br>
+
+<span> <%= request.getCookies() %></span>
+
 <a href="checkout.jsp">checkout</a>
-<form action="LogoutServlet" method="post">
+<form action="logout" method="get">
 	<input type="submit" value="logout">
 </form>
 
