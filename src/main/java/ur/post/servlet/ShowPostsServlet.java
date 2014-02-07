@@ -1,4 +1,4 @@
-package ur.controller;
+package ur.post.servlet;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ur.bean.DAO;
-import ur.model.Post;
+import ur.post.model.Post;
 
 @WebServlet("/posts")
 public class ShowPostsServlet extends HttpServlet {
@@ -42,9 +42,10 @@ public class ShowPostsServlet extends HttpServlet {
 				String title = resultSet.getString("title");
 				String body = resultSet.getString("body");
 				int userId = resultSet.getInt("userId");
-				System.out.println(id);
-				System.out.println(title);
-				System.out.println(body);
+//				System.out.println(id);
+//				System.out.println(title);
+//				System.out.println(body);
+				
 				System.out.println(userId);
 				Post getThePosts = new Post(id, title, body, userId);
 				posts.add(getThePosts);

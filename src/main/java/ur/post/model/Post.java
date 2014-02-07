@@ -1,4 +1,4 @@
-package ur.model;
+package ur.post.model;
 
 public class Post {
 

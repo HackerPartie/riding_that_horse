@@ -1,4 +1,4 @@
-package ur.model;
+package ur.user.model;
 
 public class User {
 

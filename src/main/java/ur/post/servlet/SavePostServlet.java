@@ -1,4 +1,4 @@
-package ur.controller;
+package ur.post.servlet;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import ur.bean.DAO;
 
 @WebServlet("/savepost")
-public class PostServlet extends HttpServlet {
+public class SavePostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private PreparedStatement preparedStatement = null;

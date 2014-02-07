@@ -10,14 +10,12 @@
 <body>
 <%@include file="include/navigation.jsp" %>
 
-<div>
-<c:forEach items="${posts}" var="posting">
-	<a href="/post/?id=${posting.id}">${posting.id}</a><br>
-	<b>${posting.title}</b><br>
-	${posting.body}<br>
-	${posting.userId}<br><br>
-</c:forEach>
-</div>
+<form action="/updatesinglepost" method="post">
+	<input type="text" name="title" value="${post.title}"><br>
+	<input type="hidden" name="id" value="${post.id}"><br>
+	<textarea rows="5" cols="31" name="body">${post.body}</textarea><br>
+	<input type="submit" value="update">
+</form>
 
 </body>
 </html>
