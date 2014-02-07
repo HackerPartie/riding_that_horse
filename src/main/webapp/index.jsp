@@ -10,8 +10,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@include file="include/navigation.jsp" %>
 
 	<br>
+	
+	<%= request.getAttribute("userName") %><br>
 	
 <form action="riding" method="get">
 	<select id="horse" name="horsename">
@@ -25,7 +28,7 @@
 </form>	
 
 <c:forEach items="${rides}" var="ride">
-	${ride.horsemanName} rode ${ride.horseName} in ${ride.place} on ${ride.day}<br>
+	${ride.horsemanName} hat ${ride.horseName} auf ${ride.place} am ${ride.day} geritten<br>
 </c:forEach>
 	
 </body>

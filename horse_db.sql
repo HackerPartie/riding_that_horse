@@ -1,6 +1,8 @@
 drop table if exists horse;
 drop table if exists horseman;
 drop table if exists horse_horseman;
+drop table if exists user;
+drop table if exists post;
 
 create table horse(
 	id int not null auto_increment, 
@@ -18,6 +20,21 @@ create table horse_horseman(
 	day varchar(40), 
 	place varchar(255), 
 	primary key (id)
+);
+
+create table user(
+	id int not null auto_increment,
+	username varchar(40) not null,
+	password varchar(255) not null,
+	primary key(id)
+);
+
+create table post(
+	id int not null auto_increment,
+	title varchar(55) not null,
+	body varchar(255) not null,
+	userId int not null,
+	primary key(id)
 );
 
 insert into horse (horseName) values ('Fury');

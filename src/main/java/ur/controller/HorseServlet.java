@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ur.bean.DAO;
-import ur.model.GetTheDamnRide;
 import ur.model.Horse;
 
 @WebServlet("/horse")
@@ -55,7 +53,6 @@ public class HorseServlet extends HttpServlet {
 				preparedStatement.close();
 				rs.close();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			

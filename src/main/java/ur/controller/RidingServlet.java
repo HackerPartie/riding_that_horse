@@ -26,7 +26,7 @@ public class RidingServlet extends HttpServlet {
 		ResultSet rs = null;
 		Connection c = null;
 		PreparedStatement preparedStatement = null;
-		List<GetTheDamnRide> rides = new ArrayList<GetTheDamnRide>();
+		List<GetTheDamnRide> rides = new ArrayList<>();
 		String sqlString = "select h.*, hm.*, hhm.* "
 				+ "from horse h, horseman hm, horse_horseman hhm "
 				+ "where hhm.horseId = h.id and hhm.horsemanId = hm.id and h.horseName = ?;";
