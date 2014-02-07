@@ -1,4 +1,4 @@
-package ur.controller.login;
+package ur.user.filter;
 
 import java.io.IOException;
 
@@ -36,6 +36,11 @@ public class AuthFilter implements Filter {
 				}
 			}
 		}
+		
+		System.out.println("user: ");
+		System.out.println(user);
+		System.out.println("u: ");
+		System.out.println(u);
 		
 		request.setAttribute("u", u);
 		// pass the request along the filter chain

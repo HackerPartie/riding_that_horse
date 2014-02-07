@@ -1,4 +1,4 @@
-package ur.controller.login;
+package ur.user.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
