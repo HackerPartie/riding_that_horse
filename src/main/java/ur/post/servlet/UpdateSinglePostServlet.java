@@ -1,6 +1,7 @@
 package ur.post.servlet;
 
-import java.io.IOException;
+import ur.post.bean.CrudPostDao;
+import ur.post.model.Post;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,9 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import ur.post.model.CrudPost;
-import ur.post.model.Post;
+import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet("/updatesinglepost/*")
 public class UpdateSinglePostServlet extends HttpServlet {
@@ -22,11 +22,15 @@ public class UpdateSinglePostServlet extends HttpServlet {
 		int id1 = Integer.parseInt(aidee);
 		String sql = "select * from post where id = ?;";
 		
-		CrudPost getPost = new CrudPost();
+		CrudPostDao getPost = new CrudPostDao();
 		Post post = null;
-		post = getPost.getThePost(sql, id1);
-		
-		System.out.println(post);
+        try {
+            post = getPost.readPost(sql, id1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(post);
 		if (post == null) {
 			System.out.println("response.sendError(400, 'Gibts nicht')");
 		} else {
@@ -41,12 +45,13 @@ public class UpdateSinglePostServlet extends HttpServlet {
 		
 		String aidee = request.getParameter("id");
 		int id1 = Integer.parseInt(aidee);
+        String sql = "update post set title = ?, body = ? where id = ?";
 		String title = request.getParameter("title");
 		String body = request.getParameter("body");
 		
-		CrudPost updatePost = new CrudPost();
+		CrudPostDao updatePost = new CrudPostDao();
 		try {
-			updatePost.updatePost(id1, title, body);
+			updatePost.updatePost(sql, id1, title, body);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -8,7 +8,6 @@
 </head>
 <body>
 
-<%@include file="include/auth.jsp" %>
 <%@include file="include/navigation.jsp" %>
 
 <%= request.getAttribute("userName") %>

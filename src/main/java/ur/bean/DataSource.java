@@ -3,7 +3,7 @@ package ur.bean;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class DAO {
+public class DataSource {
 	
 	private Connection connection = null;
 	
@@ -26,9 +26,5 @@ public class DAO {
 			e.printStackTrace();
 		}
 	}
-		
-		
-	
-	
 
 }

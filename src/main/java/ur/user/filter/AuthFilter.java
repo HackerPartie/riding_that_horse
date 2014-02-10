@@ -1,17 +1,11 @@
 package ur.user.filter;
 
-import java.io.IOException;
-
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 @WebFilter("/*")
 public class AuthFilter implements Filter {
@@ -37,10 +31,10 @@ public class AuthFilter implements Filter {
 			}
 		}
 		
-		System.out.println("user: ");
-		System.out.println(user);
-		System.out.println("u: ");
-		System.out.println(u);
+//		System.out.println("user: ");
+//		System.out.println(user);
+//		System.out.println("u: ");
+//		System.out.println(u);
 		
 		request.setAttribute("u", u);
 		// pass the request along the filter chain

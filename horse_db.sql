@@ -9,11 +9,13 @@ create table horse(
 	horseName varchar(40), 
 	PRIMARY KEY (id)
 );
+
 create table horseman(
 	id int not null auto_increment, 
 	horsemanName varchar(40), 
 	primary key (id)
 );
+
 create table horse_horseman(
 	id int not null auto_increment, 
 	horseId int, horsemanId int, 
@@ -32,7 +34,7 @@ create table user(
 create table post(
 	id int not null auto_increment,
 	title varchar(55) not null,
-	body varchar(255) not null,
+	body varchar(10000) not null,
 	userId int not null,
 	primary key(id)
 );

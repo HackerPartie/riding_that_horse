@@ -1,14 +1,13 @@
 package ur.post.servlet;
 
-import java.io.IOException;
+import ur.post.bean.CrudPostDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import ur.post.model.CrudPost;
+import java.io.IOException;
 
 @WebServlet("/delete/*")
 public class DeletePostServlet extends HttpServlet {
@@ -17,8 +16,9 @@ public class DeletePostServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String aidee = request.getParameter("id");
 		int id1 = Integer.parseInt(aidee);
-		CrudPost crudPost = new CrudPost();
-		crudPost.deletePost(id1);
+        String sql = "delete from post where id = ?;";
+		CrudPostDao crudPostDao = new CrudPostDao();
+		crudPostDao.deletePost(sql, id1);
 		response.sendRedirect("/posts");
 	}
 
