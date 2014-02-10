@@ -1,11 +1,7 @@
 package ur.controller;
 
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
+import ur.bean.DataSource;
+import ur.model.GetTheDamnRide;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,16 +9,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import ur.bean.DAO;
-import ur.model.GetTheDamnRide;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet("/riding")
 public class RidingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		DAO dbO = new DAO();
+		DataSource dbO = new DataSource();
 		ResultSet rs = null;
 		Connection c = null;
 		PreparedStatement preparedStatement = null;

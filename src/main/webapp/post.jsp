@@ -10,24 +10,33 @@
 <body>
 <%@include file="include/navigation.jsp" %>
 
-id:<br> 
-${post.id}<br>
-title:<br>
-${post.title}<br>
-body:<br>
+id: ${post.id}<br>
+<h4>${post.title}</h4>
+
 ${post.body}<br>
 userId:<br>
 ${post.userId}<br>
+by ${pUsername}
 
+<c:if test="${u != null}">
+    <c:choose>
 
-<% if (request.getAttribute("u") != null) { %>
-	<% if (request.getAttribute("u").equals(request.getAttribute("pUsername"))) {  %>
-		<a href="/updatesinglepost/?id=${post.id}">update</a> | 
-		<a href="/delete/?id=${post.id}">delete</a>	
-	<% } %>
-<% } else if (request.getAttribute("u") == null){ %>
-		<c:if test=""></c:if>
-<% } %>
+	    <c:when test="${u.equals(pUsername)}">
+        	<a href="<c:url value="/updatesinglepost/?id=${post.id}"/>">update</a> |
+		    <a href="<c:url value="/delete/?id=${post.id}"/>">delete</a>
+	    </c:when>
+        <c:otherwise>
+            not authorized
+        </c:otherwise>
+    </c:choose>
+</c:if>
+<c:choose>
+    <c:when test="${u == null}">
+        login
+    </c:when>
+
+</c:choose>
+
 
 
 

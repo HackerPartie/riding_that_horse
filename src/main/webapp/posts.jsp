@@ -12,10 +12,10 @@
 
 <div>
 <c:forEach items="${posts}" var="posting">
-	<a href="/post/?id=${posting.id}">${posting.id}</a><br>
-	<b>${posting.title}</b><br>
+    <h4><a href="/post/?id=${posting.id}">${posting.title}</a></h4>
 	${posting.body}<br>
-	${posting.userId}<br><br>
+    ${posting.username}
+	<br>
 </c:forEach>
 </div>
 

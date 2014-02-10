@@ -1,10 +1,6 @@
 package ur.post.servlet;
 
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import ur.bean.DataSource;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,8 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import ur.bean.DAO;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 @WebServlet("/savepost")
 public class SavePostServlet extends HttpServlet {
@@ -30,14 +29,14 @@ public class SavePostServlet extends HttpServlet {
 		String title = request.getParameter("title");
 		String body = request.getParameter("body");
 		HttpSession session = request.getSession();		
-		DAO dao = new DAO();
+		DataSource dataSource = new DataSource();
 		
 		user = getUser(session);
 		String userSql = "select * from user where username = ?;";
 		String postSql = "insert into post(title, body, userId) value (?,?,?);";
 		
 		try {
-			connection = dao.connectDb();
+			connection = dataSource.connectDb();
 			preparedStatement = connection.prepareStatement(userSql);
 			preparedStatement.setString(1, user);
 			resultSet = preparedStatement.executeQuery();
@@ -50,7 +49,7 @@ public class SavePostServlet extends HttpServlet {
 		}
 			
 		try {
-			connection = dao.connectDb();
+			connection = dataSource.connectDb();
 			preparedStatement = connection.prepareStatement(postSql);
 			preparedStatement.setString(1, title);
 			preparedStatement.setString(2, body);

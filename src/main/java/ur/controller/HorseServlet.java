@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ur.bean.DAO;
+import ur.bean.DataSource;
 import ur.model.Horse;
 
 @WebServlet("/horse")
@@ -26,7 +26,7 @@ public class HorseServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		DAO dbO = new DAO();
+		DataSource dbO = new DataSource();
 		ResultSet rs = null;
 		Connection c = null;
 		PreparedStatement preparedStatement = null;
