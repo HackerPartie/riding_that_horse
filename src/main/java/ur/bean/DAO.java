@@ -23,7 +23,6 @@ public class DAO {
 				connection.close();
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
