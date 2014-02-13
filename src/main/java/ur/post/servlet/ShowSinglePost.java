@@ -1,8 +1,7 @@
 package ur.post.servlet;
 
 import ur.post.bean.CrudPostDao;
-import ur.post.model.Post;
-import ur.user.bean.CrudUserDao;
+import ur.post.model.PostByUser;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,26 +23,21 @@ public class ShowSinglePost extends HttpServlet {
 
 		String aidee = req.getParameter("id");
 		int id1 = Integer.parseInt(aidee);
-        String sql = "select * from post where id = ?;";
+        String sql = "select post.id, post.title, post.body, user.username from post inner join user on post.userId = user.id where post.id = ?;";
 
         CrudPostDao crudPostDao = new CrudPostDao();
-        Post post = new Post();
+        PostByUser postByUser = null;
         try {
-            post = crudPostDao.readPost(sql, id1);
+            postByUser = crudPostDao.readPost(sql, id1);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        String postingUsername = null;
-		CrudUserDao user = new CrudUserDao();
-		int userId = post.getUserId();
-		postingUsername = user.getUsername(userId);
-		
-		if (post == null) {
+		if (postByUser == null) {
 			extracted(resp);
         } else {
-			req.setAttribute("post", post);
-			req.setAttribute("pUsername", postingUsername);
+			req.setAttribute("post", postByUser);
+			//req.setAttribute("pUsername", postingUsername);
 			RequestDispatcher dispatcher = req.getRequestDispatcher("../post.jsp");
 			dispatcher.forward(req, resp);
 		}

@@ -1,7 +1,7 @@
 package ur.post.servlet;
 
 import ur.post.bean.CrudPostDao;
-import ur.post.model.Post;
+import ur.post.model.PostByUser;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,21 +20,21 @@ public class UpdateSinglePostServlet extends HttpServlet {
 		
 		String aidee = request.getParameter("id");
 		int id1 = Integer.parseInt(aidee);
-		String sql = "select * from post where id = ?;";
+		String sql = "select post.id, post.title, post.body, user.username from post inner join user on post.userId = user.id where post.id = ?;";
 		
 		CrudPostDao getPost = new CrudPostDao();
-		Post post = null;
+		PostByUser postByUser = null;
         try {
-            post = getPost.readPost(sql, id1);
+            postByUser = getPost.readPost(sql, id1);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        System.out.println(post);
-		if (post == null) {
+        System.out.println(postByUser);
+		if (postByUser == null) {
 			System.out.println("response.sendError(400, 'Gibts nicht')");
 		} else {
-			request.setAttribute("post", post);
+			request.setAttribute("post", postByUser);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../update_post.jsp");
 			dispatcher.forward(request, response);
 		}

@@ -14,10 +14,12 @@
 <c:forEach items="${posts}" var="posting">
     <h4><a href="/post/?id=${posting.id}">${posting.title}</a></h4>
 	${posting.body}<br>
-    ${posting.username}
+    <small>by ${posting.username}</small>
 	<br>
 </c:forEach>
 </div>
+
+<br><br><br>
 
 </body>
 </html>
