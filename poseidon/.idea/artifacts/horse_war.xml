@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="horse:war">
-    <output-path>$PROJECT_DIR$/../crud/target</output-path>
-    <root id="archive" name="horse-1.war">
-      <element id="artifact" artifact-name="horse:war exploded" />
-    </root>
-  </artifact>
-</component>
