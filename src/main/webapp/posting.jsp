@@ -12,7 +12,7 @@
 
 <%= request.getAttribute("userName") %>
 
-<form action="savepost" method="post" id="postingform">
+<form action="createpost" method="post" id="postingform">
 	<input type="text" name="title"><br>
 	<textarea rows="5" cols="31" name="body"></textarea><br>
 	<input type="submit" value="post">

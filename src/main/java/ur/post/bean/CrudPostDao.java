@@ -1,7 +1,6 @@
 package ur.post.bean;
 
 import ur.bean.ConnSource;
-import ur.post.model.Post;
 import ur.post.model.PostByUser;
 
 import java.sql.PreparedStatement;
@@ -12,15 +11,14 @@ import java.util.List;
 
 public class CrudPostDao extends ConnSource implements PostDao {
 	
-	public void createPost(String sql, String title, String body, int userId) {
+	public void createPost(String postSql, String title, String body, int userId) {
 
-		PreparedStatement preparedStatement = null;
-		
+		PreparedStatement preparedStatement;
+
 		try {
-			preparedStatement = getConnection(sql);
+			preparedStatement = getConnection(postSql);
 			preparedStatement.setString(1, title);
 			preparedStatement.setString(2, body);
-			System.out.println(userId);
 			preparedStatement.setInt(3, userId);
 			preparedStatement.executeUpdate();
 		} catch (Exception e) {
@@ -32,11 +30,10 @@ public class CrudPostDao extends ConnSource implements PostDao {
 	}
 
     @Override
-    public Post readPost(String sql, int id1) throws SQLException {
-        PreparedStatement preparedStatement = null;
+    public PostByUser readPost(String sql, int id1) throws SQLException {
+        PreparedStatement preparedStatement;
         ResultSet resultSet = null;
-        Post post = null;
-        preparedStatement = getConnection(sql);
+        PostByUser postByUser = null;
         try {
             preparedStatement = getConnection(sql);
             preparedStatement.setInt(1,id1);
@@ -48,16 +45,20 @@ public class CrudPostDao extends ConnSource implements PostDao {
             int id = resultSet.getInt("id");
             String title = resultSet.getString("title");
             String body = resultSet.getString("body");
-            int userId = resultSet.getInt("userId");
-            post = new Post(id, title, body, userId);
+            String username = resultSet.getString("username");
+            postByUser = new PostByUser(id, title, body, username);
         }
-        closeConn();
-        return post;
+        try {
+            closeConn();
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+        return postByUser;
     }
 
     @Override
     public void updatePost(String sql, int id1, String title, String body) {
-		PreparedStatement preparedStatement = null;
+		PreparedStatement preparedStatement;
 		try {
 			preparedStatement = getConnection(sql);
 			preparedStatement.setString(1, title);
@@ -73,7 +74,7 @@ public class CrudPostDao extends ConnSource implements PostDao {
 
     @Override
 	public void deletePost(String sql, int id1) {
-		PreparedStatement preparedStatement = null;
+		PreparedStatement preparedStatement;
 		try {
 			preparedStatement = getConnection(sql);
 			preparedStatement.setInt(1, id1);
@@ -89,7 +90,7 @@ public class CrudPostDao extends ConnSource implements PostDao {
     public List<PostByUser> getPosts(String sql) {
 
         List<PostByUser> posts = new ArrayList<>();
-        PreparedStatement preparedStatement = null;
+        PreparedStatement preparedStatement;
         ResultSet resultSet = null;
         preparedStatement = getConnection(sql);
         try {
@@ -99,13 +100,7 @@ public class CrudPostDao extends ConnSource implements PostDao {
 				String title = resultSet.getString("title");
 				String body = resultSet.getString("body");
                 String username = resultSet.getString("username");
-                //System.out.println(username);
-                //System.out.println(title);
-				//int userId = resultSet.getInt("userId");
                 PostByUser postings = new PostByUser(id, title, body, username);
-                System.out.println(postings.getClass());
-                System.out.println(postings.getUsername());
-                System.out.println(postings.getTitle());
                 posts.add(postings);
                 for (PostByUser postByUser: posts) {
                     System.out.println(postByUser.getUsername());

@@ -15,7 +15,7 @@
 	<input type="submit" value="login"> 
 </form>
 
-<form action="RegisterServlet" method="post">
+<form action="register" method="post">
 	username: <input type="text" name="user"><br>
 	password: <input type="password" name="pwd"><br>
 	<input type="submit" value="register">

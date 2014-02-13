@@ -14,14 +14,14 @@ id: ${post.id}<br>
 <h4>${post.title}</h4>
 
 ${post.body}<br>
-userId:<br>
-${post.userId}<br>
-by ${pUsername}
+<br><br>
+by ${post.username}
+
 
 <c:if test="${u != null}">
     <c:choose>
 
-	    <c:when test="${u.equals(pUsername)}">
+	    <c:when test="${u.equals(post.username)}">
         	<a href="<c:url value="/updatesinglepost/?id=${post.id}"/>">update</a> |
 		    <a href="<c:url value="/delete/?id=${post.id}"/>">delete</a>
 	    </c:when>
@@ -36,7 +36,6 @@ by ${pUsername}
     </c:when>
 
 </c:choose>
-
 
 
 

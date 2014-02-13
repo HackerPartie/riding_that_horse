@@ -6,8 +6,8 @@ import java.sql.SQLException;
 
 public class ConnSource extends DataSource {
 
-    Connection connection = null;
-    PreparedStatement preparedStatement = null;
+    private Connection connection = null;
+    private PreparedStatement preparedStatement = null;
 
     public PreparedStatement getConnection(String sql){
         try {
@@ -16,6 +16,7 @@ public class ConnSource extends DataSource {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println(preparedStatement);
         return preparedStatement;
     }
 

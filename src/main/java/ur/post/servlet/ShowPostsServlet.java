@@ -27,9 +27,9 @@ public class ShowPostsServlet extends HttpServlet {
         posts = crudPostDao.getPosts(sql);
 
 		System.out.println(posts.isEmpty());
-        for (PostByUser postByUser: posts) {
-            System.out.println(postByUser.getUsername());
-        }
+//        for (PostByUser postByUser: posts) {
+//            System.out.println(postByUser.getUsername());
+//        }
 		request.setAttribute("posts", posts);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("posts.jsp");
 		dispatcher.forward(request, response);
